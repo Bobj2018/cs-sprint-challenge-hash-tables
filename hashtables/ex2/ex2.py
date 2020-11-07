@@ -1,4 +1,3 @@
-#  Hint:  You may not need all of these.  Remove the unused functions.
 class Ticket:
     def __init__(self, source, destination):
         self.source = source
@@ -6,9 +5,16 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    hash_tickets = {}
+    route = [None] * length
+
+    for ticket in tickets:
+        hash_tickets[ticket.source] = ticket.destination
+
+    curr_destination = hash_tickets["NONE"]
+
+    for i in range(length):
+        route[i] = curr_destination
+        curr_destination = hash_tickets[curr_destination]
 
     return route
